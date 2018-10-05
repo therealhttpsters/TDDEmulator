@@ -30,10 +30,10 @@ class TTYEmulator extends JPanel
 		StyledDocument doc = fConversationView.getStyledDocument();		
 		Style def = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
 		Style regular = doc.addStyle("regular", def);
-		StyleConstants.setFontFamily(regular, "SansSerif");
+		StyleConstants.setFontFamily(regular, "Serif");
 		Style me = doc.addStyle("me", regular);
 		StyleConstants.setBold(me, true);
-		StyleConstants.setForeground(me, Color.blue);
+		StyleConstants.setForeground(me, Color.DARK_GRAY);
 		Style them = doc.addStyle("them", regular);
 		
 		JScrollPane conversationScroll = new JScrollPane(fConversationView);
