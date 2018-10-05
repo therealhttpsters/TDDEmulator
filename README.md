@@ -1,4 +1,4 @@
-#TTY/TDD Emulator
+# TTY/TDD Emulator
 
 Supporting the veryserious.website work, this is an effort to update the tooling necessary to make TTYs usable on computers again.
 
