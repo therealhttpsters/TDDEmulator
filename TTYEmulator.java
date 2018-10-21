@@ -39,7 +39,7 @@ class TTYEmulator extends JPanel
 		JScrollPane conversationScroll = new JScrollPane(fConversationView);
 		add(conversationScroll, BorderLayout.CENTER);
 
-		fInputField = new JTextField();
+		fInputField = new JTextField(22);
 		fInputField.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent e)
@@ -47,7 +47,13 @@ class TTYEmulator extends JPanel
 					handleTextInput();
 				}
 			});
-		add(fInputField, BorderLayout.SOUTH);
+
+		fWriteToFileButton = new JButton("Export to WAV");
+
+		fInputPanel = new JPanel(new FlowLayout());
+		fInputPanel.add(fInputField);
+		fInputPanel.add(fWriteToFileButton);
+		add(fInputPanel, BorderLayout.SOUTH);
 		setPreferredSize(new Dimension(400,300));
 
 		fOutput = new TTYOutput();
@@ -131,6 +137,8 @@ class TTYEmulator extends JPanel
 	private boolean fUnterminatedInputLine = false;
 	private TTYOutput fOutput;
 	private TTYInput fInput;
+	private JPanel fInputPanel;
+	private JButton fWriteToFileButton;
 	private JTextPane fConversationView;
 	private JTextField fInputField;
 }
