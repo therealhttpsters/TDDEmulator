@@ -41,7 +41,7 @@ class TTYEmulator extends JPanel
 		JScrollPane conversationScroll = new JScrollPane(fConversationView);
 		add(conversationScroll, BorderLayout.CENTER);
 
-		fInputField = new JTextField(17);
+		fInputField = new JTextField(15);
 		fInputField.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent e)
