@@ -51,7 +51,7 @@ class TTYOutput implements Runnable
 				return;
 			}
 
-			fWavFile = new File("WavOutput.wav");
+			fWavFile = new File("TTYWavOutput.wav");
 
 			fAudioSink = (SourceDataLine) AudioSystem.getLine(info);
 			fAudioSink.open(format, kBufferSize);
@@ -93,7 +93,7 @@ class TTYOutput implements Runnable
 				return;
 			}
 
-			fWavFile = new File("WavOutput.wav");
+			fWavFile = new File("TTYWavOutput.wav");
 			fAudioWriter = new TTYAudioWriter(fWavFile, format, fFileType);
 		}
 		catch (IOException ioe)

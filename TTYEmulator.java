@@ -56,10 +56,18 @@ class TTYEmulator extends JPanel
 			public void actionPerformed(ActionEvent e)
 			{
 				String newFileStr = "";
-				File oldFile = new File("WavOutput.wav");
+				File oldFile = new File("TTYWavOutput.wav");
+				File newFile;
 
 				newFileStr = JOptionPane.showInputDialog(null, "Enter name for file", "Export to WAV", JOptionPane.INFORMATION_MESSAGE);
-				File newFile = new File(newFileStr + ".wav");
+
+				if (newFileStr != null)
+					newFile = new File(newFileStr + ".wav");
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Export cancelled!", "Failure!", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 
 				if (oldFile.renameTo(newFile))
 					JOptionPane.showMessageDialog(null, "Export successful", "Success!", JOptionPane.INFORMATION_MESSAGE);
