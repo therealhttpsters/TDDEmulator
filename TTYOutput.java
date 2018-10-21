@@ -79,6 +79,29 @@ class TTYOutput implements Runnable
 		this.notify();
 	}
 
+	public void resetWriter()
+	{
+		try
+		{
+			fAudioWriter.close();
+
+			AudioFormat format = new AudioFormat(kSampleRate, 16, 1, true, true);
+			DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+			if (!AudioSystem.isLineSupported(info))
+			{
+				System.out.println("Line matching " + info + " not supported.");
+				return;
+			}
+
+			fWavFile = new File("WavOutput.wav");
+			fAudioWriter = new TTYAudioWriter(fWavFile, format, fFileType);
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+
 	private void outputBit(boolean isMark)
 	{
 		double dAngle = (isMark ? kMarkFrequency : kSpaceFrequency)

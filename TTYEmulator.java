@@ -18,6 +18,8 @@ import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 
 class TTYEmulator extends JPanel
 {
@@ -49,6 +51,24 @@ class TTYEmulator extends JPanel
 			});
 
 		fWriteToFileButton = new JButton("Export to WAV");
+		fWriteToFileButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				String newFileStr = "";
+				File oldFile = new File("WavOutput.wav");
+
+				newFileStr = JOptionPane.showInputDialog(null, "Enter name for file", "Export to WAV", JOptionPane.INFORMATION_MESSAGE);
+				File newFile = new File(newFileStr + ".wav");
+
+				if (oldFile.renameTo(newFile))
+					JOptionPane.showMessageDialog(null, "Export successful", "Success!", JOptionPane.INFORMATION_MESSAGE);
+				else
+					JOptionPane.showMessageDialog(null, "There was a problem!", "Failure!", JOptionPane.ERROR_MESSAGE);
+
+				fOutput.resetWriter();
+			}
+		});
 
 		fInputPanel = new JPanel(new FlowLayout());
 		fInputPanel.add(fInputField);
