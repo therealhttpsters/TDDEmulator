@@ -145,6 +145,16 @@ class TTYEmulator extends JPanel
 	private static void createAndShowGUI()
 	{
 		JFrame frame = new JFrame("TTY Emulator");
+		frame.addWindowListener(new WindowAdapter()
+    {
+      @Override
+      public void windowClosing(WindowEvent e)
+      {
+				new File("TTYWavOutput.wav").delete();
+        e.getWindow().dispose();
+      }
+    });
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		TTYEmulator emulator = new TTYEmulator();
